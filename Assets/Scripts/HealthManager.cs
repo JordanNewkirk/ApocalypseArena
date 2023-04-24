@@ -24,11 +24,9 @@ public class HealthManager : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        thePlayer = FindObjectOfType<PlayerController>();
         SetHealthText();
     }
-
-
-    // Start is called before the first frame update
 
     void SetHealthText()
     {

@@ -11,6 +11,7 @@ public class ZombieAI : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        damageToGive = 1;
     }
 
     void Update()
