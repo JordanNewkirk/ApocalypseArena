@@ -10,15 +10,56 @@ public class WaveSpawner : MonoBehaviour
     public TextMeshProUGUI zombiesRemainingText;
     public TextMeshProUGUI waveNumberText;
 
-    private int waveNumber = 0;
+    public int waveNumber = 1;
     private int zombiesPerWave = 10;
     private int zombiesRemaining = 0;
 
+    private void OnEnable()
+    {
+        SpawnListner.OnZombieAdded += SpawnListner_OnZombieAdded;
+        Zombie.OnDeath += Zombie_OnDeath;
+    }
+
+    private void SpawnListner_OnZombieAdded(object sender, SpawnListner.OnZombieAddedArgs e)
+    {
+        zombiesRemaining += e.ZombiesAdded;
+        UpdateUI();
+    }
+
+    private void Zombie_OnDeath(object sender, Zombie.OnDeathEventArgs e)
+    {
+        zombiesRemaining--;
+        UpdateUI();
+    }
+
+    private void OnDisable()
+    {
+        SpawnListner.OnZombieAdded -= SpawnListner_OnZombieAdded;
+        Zombie.OnDeath -= Zombie_OnDeath;
+    }
+
+    public class OnSpawnEventArgs
+    {
+        public WaveSpawner Spawn;
+
+        public OnSpawnEventArgs(WaveSpawner waveSpawner)
+        {
+            Spawn = waveSpawner;
+        }
+
+    }
+
+    public static event System.EventHandler<OnSpawnEventArgs> OnSpawn;
+
     void Start()
     {
+        waveNumber = 1;
         zombiesRemaining = zombiesPerWave;
         UpdateUI();
         waveNumberText.text = "Wave: " + waveNumber.ToString();
+
+        StartCoroutine(SpawnWave());
+        OnSpawn?.Invoke(this, new OnSpawnEventArgs(this));
     }
 
     void Update()
@@ -33,10 +74,12 @@ public class WaveSpawner : MonoBehaviour
     {
         waveNumber++;
         waveNumberText.text = "Wave: " + waveNumber.ToString();
+
         zombiesPerWave += 5;
         zombiesRemaining = zombiesPerWave;
 
         StartCoroutine(SpawnWave());
+        OnSpawn?.Invoke(this, new OnSpawnEventArgs(this));
         UpdateUI();
     }
 
@@ -52,8 +95,6 @@ public class WaveSpawner : MonoBehaviour
     void SpawnZombie()
     {
         Instantiate(zombiePrefab, spawnPoint.position, spawnPoint.rotation);
-        zombiesRemaining--;
-        UpdateUI();
     }
 
     void UpdateUI()
@@ -61,5 +102,6 @@ public class WaveSpawner : MonoBehaviour
         zombiesRemainingText.text = "Zombies Until Next Wave: " + zombiesRemaining.ToString();
     }
 }
+
 
 
