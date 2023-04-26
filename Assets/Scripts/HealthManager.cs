@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class HealthManager : MonoBehaviour
@@ -62,7 +63,7 @@ public class HealthManager : MonoBehaviour
 
             if(currentHealth <= 0)
             {
-                //die
+                SceneManager.LoadScene("Death Menu");
             }
             else
             {

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JordanTest.unity
     guid: 398b33a51ffc3a84fafd85f5684d85c5
+  - enabled: 1
+    path: Assets/Scenes/Death Menu.unity
+    guid: 8c647c58a08ddd946ba8e9c059a90230
   m_configObjects: {}
