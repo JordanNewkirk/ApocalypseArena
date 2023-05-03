@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    public float life = 2;
+    public float life = 3;
 
     void Awake()
     {
@@ -15,8 +15,12 @@ public class bullet : MonoBehaviour
     {
         if(collision.gameObject.tag == "Zombie")
         {
-            Destroy(collision.gameObject);
             Destroy(gameObject);
+            var healthComponent = collision.GetComponent<health>();
+            if (healthComponent != null)
+            {
+                healthComponent.TakeDamage(1);
+            }
         }
     }
 }
