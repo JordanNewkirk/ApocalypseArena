@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject playerModel;
 
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,13 +46,13 @@ public class PlayerController : MonoBehaviour
 
     //void SetCountText()
     //{
-        //countText.text = "Count: " + count.ToString();
+    //countText.text = "Count: " + count.ToString();
 
-      //  if (count == 1)
-        //{
-          //  Win.Play();
-            //winTextObject.SetActive(true);
-        //}
+    //  if (count == 1)
+    //{
+    //  Win.Play();
+    //winTextObject.SetActive(true);
+    //}
     //}
 
 
@@ -95,13 +95,13 @@ public class PlayerController : MonoBehaviour
             }
             //else
             //{
-               // if (Input.GetButtonDown("Jump") && canDoubleJump)
-               // {
-                    //Jump.Play();
-                  //  moveDirection.y = jumpForce * doubleJumpScale;
-                    //anim.SetBool("isGrounded", true);
-                   // canDoubleJump = false;
-                //}
+            // if (Input.GetButtonDown("Jump") && canDoubleJump)
+            // {
+            //Jump.Play();
+            //  moveDirection.y = jumpForce * doubleJumpScale;
+            //anim.SetBool("isGrounded", true);
+            // canDoubleJump = false;
+            //}
 
             //}
 
@@ -131,17 +131,17 @@ public class PlayerController : MonoBehaviour
         // Update Animator parameters
         anim.SetFloat("Speed", Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z));
         anim.SetBool("isGrounded", controller.isGrounded);
-        if(controller.isGrounded)
+        if (controller.isGrounded)
         {
             anim.SetBool("isJumping", false);
         }
 
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-      
+
     }
 
 
@@ -155,4 +155,3 @@ public class PlayerController : MonoBehaviour
 
 
 }
-
