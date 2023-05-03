@@ -5222,7 +5222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3894667087752471045, guid: e2859f72b777a144dac750f21ef70739, type: 3}
       propertyPath: m_Name
-      value: Ch44_nonPBR
+      value: BetterPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 4415625194867292351, guid: e2859f72b777a144dac750f21ef70739, type: 3}
       propertyPath: m_RootOrder
@@ -5266,6 +5266,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4415625194867292351, guid: e2859f72b777a144dac750f21ef70739, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077917773856905108, guid: e2859f72b777a144dac750f21ef70739, type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
