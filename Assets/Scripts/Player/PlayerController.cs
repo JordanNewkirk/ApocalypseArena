@@ -8,14 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     public AudioSource walking;
     public float moveSpeed;
-    //public Rigidbody rb;
     public float jumpForce;
     public CharacterController controller;
-
-    //public TextMeshProUGUI countText;
-    //public GameObject winTextObject;
-    //private int count;
-
 
     private Vector3 moveDirection;
     public float gravityScale;
@@ -27,23 +21,21 @@ public class PlayerController : MonoBehaviour
     public float knockBackTime;
     private float knockBackCounter;
 
-    //public Animator anim;
+    public Animator anim;
 
     public Transform pivot;
     public float rotateSpeed;
 
     public GameObject playerModel;
 
-    //public GameObject pickupEffect;
-
-    //public AudioSource Jump;
-    //public AudioSource Win;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         //rb = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
+        anim = playerModel.GetComponent<Animator>();
         //count = 0;
 
         //SetCountText();
@@ -97,20 +89,21 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetButtonDown("Jump"))
                 {
                     //Jump.Play();
+                    anim.SetBool("isJumping", true);
                     moveDirection.y = jumpForce;
                 }
             }
-            else
-            {
-                if (Input.GetButtonDown("Jump") && canDoubleJump)
-                {
+            //else
+            //{
+               // if (Input.GetButtonDown("Jump") && canDoubleJump)
+               // {
                     //Jump.Play();
-                    moveDirection.y = jumpForce * doubleJumpScale;
+                  //  moveDirection.y = jumpForce * doubleJumpScale;
                     //anim.SetBool("isGrounded", true);
-                    canDoubleJump = false;
-                }
+                   // canDoubleJump = false;
+                //}
 
-            }
+            //}
 
         }
         else
@@ -135,36 +128,22 @@ public class PlayerController : MonoBehaviour
             walking.Stop(); // or Pause()
 
 
+        // Update Animator parameters
+        anim.SetFloat("Speed", Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z));
+        anim.SetBool("isGrounded", controller.isGrounded);
+        if(controller.isGrounded)
+        {
+            anim.SetBool("isJumping", false);
+        }
 
-        //anim.SetBool("isGrounded", controller.isGrounded);
-        // anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal"))));
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-       // if (other.gameObject.CompareTag("PickUp"))
-      //  {
-           // Instantiate(pickupEffect, transform.position, transform.rotation);
-          //  other.gameObject.SetActive(false);
-            //count += 1;
-
-           // SetCountText();
-
-       // }
-
-       // if (other.gameObject.CompareTag("JumpPlatform"))
-      //  {
-        //    canDoubleJump = true;
-      //  }
+      
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        //if (other.gameObject.CompareTag("JumpPlatform"))
-       // {
-        //    canDoubleJump = true;
-       // }
-    }
 
     public void Knockback(Vector3 direction)
     {

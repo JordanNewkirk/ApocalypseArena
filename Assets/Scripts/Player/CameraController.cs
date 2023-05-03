@@ -67,6 +67,8 @@ public class CameraController : MonoBehaviour
             pivot.rotation = Quaternion.Euler(360f + minViewAngle, 0, 0);
         }
 
+        target.Rotate(0, horizontal, 0);
+
         //Move the camera based on the current rotation of the target and the original offset
         float desiredYAngle = pivot.eulerAngles.y;
         float desiredXAngle = pivot.eulerAngles.x;

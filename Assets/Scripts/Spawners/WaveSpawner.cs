@@ -6,13 +6,14 @@ using TMPro;
 public class WaveSpawner : MonoBehaviour
 {
     public GameObject zombiePrefab;
-    public Transform spawnPoint;
+    public Transform[] spawnPoints;
     public TextMeshProUGUI zombiesRemainingText;
     public TextMeshProUGUI waveNumberText;
 
     public int waveNumber = 1;
     private int zombiesPerWave = 10;
     private int zombiesRemaining = 0;
+    private int currentSpawnPointIndex = 0;
 
     private void OnEnable()
     {
@@ -94,6 +95,8 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnZombie()
     {
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+
         Instantiate(zombiePrefab, spawnPoint.position, spawnPoint.rotation);
     }
 
