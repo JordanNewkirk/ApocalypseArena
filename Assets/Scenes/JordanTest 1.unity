@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -275,6 +275,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80049050}
   m_CullTransparentMesh: 1
+--- !u!1 &91748897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 448262401345686984, guid: 46f4f38fc92ca2f47ab9f8e1f6f971ea, type: 3}
+  m_PrefabInstance: {fileID: 448262401447907819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &91748904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91748897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e56b28e4d91d447189228986109afc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &134814980
 GameObject:
   m_ObjectHideFlags: 0
@@ -4220,6 +4237,14 @@ PrefabInstance:
       propertyPath: pivot
       value: 
       objectReference: {fileID: 545237433}
+    - target: {fileID: 2162730743500112878, guid: 9f43a52853cd7c1459335a54aa7d8889, type: 3}
+      propertyPath: bulletSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253164239977609679, guid: 9f43a52853cd7c1459335a54aa7d8889, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f43a52853cd7c1459335a54aa7d8889, type: 3}
 --- !u!1001 &448262401447907819

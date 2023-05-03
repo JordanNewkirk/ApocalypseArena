@@ -6,7 +6,7 @@ public class gun : MonoBehaviour
 {
     public Transform BulletSpawner;
     public GameObject bulletPrefab;
-    public float bulletSpeed = 10;
+    public float bulletSpeed = 100;
 
 
     // Update is called once per frame
