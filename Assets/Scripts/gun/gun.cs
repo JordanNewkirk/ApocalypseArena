@@ -12,7 +12,7 @@ public class gun : MonoBehaviour
 
     private void Start()
     {
-        Shooting.volume = .1f;
+        Shooting.volume = .4f;
     }
     // Update is called once per frame
     void Update()

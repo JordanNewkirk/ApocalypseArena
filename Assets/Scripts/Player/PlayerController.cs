@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
+    public AudioSource walking;
     public float moveSpeed;
     //public Rigidbody rb;
     public float jumpForce;
@@ -127,10 +129,15 @@ public class PlayerController : MonoBehaviour
             playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
         }
 
+        if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
+            walking.Play();
+        else if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && walking.isPlaying)
+            walking.Stop(); // or Pause()
+
 
 
         //anim.SetBool("isGrounded", controller.isGrounded);
-       // anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal"))));
+        // anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal"))));
     }
 
     private void OnTriggerEnter(Collider other)
