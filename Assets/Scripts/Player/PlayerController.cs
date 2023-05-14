@@ -28,14 +28,14 @@ public class PlayerController : MonoBehaviour
 
     public GameObject playerModel;
 
-
+    private float inputX;
+    private float inputZ;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         anim = playerModel.GetComponent<Animator>();
-
     }
 
 
@@ -47,7 +47,9 @@ public class PlayerController : MonoBehaviour
         {
 
             float yStore = moveDirection.y;
-            moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
+            inputX = Input.GetAxis("Horizontal");
+            inputZ = Input.GetAxis("Vertical");
+            moveDirection = (transform.forward * inputZ) + (transform.right * inputX);
             moveDirection = moveDirection.normalized * moveSpeed;
             moveDirection.y = yStore;
 
@@ -76,7 +78,7 @@ public class PlayerController : MonoBehaviour
         controller.Move(moveDirection * Time.deltaTime);
 
         //Move the player in different directions based on camera look direction
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (inputX != 0 || inputZ != 0)
         {
             transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
             Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
@@ -89,14 +91,17 @@ public class PlayerController : MonoBehaviour
             walking.Stop(); // or Pause()
 
 
+
         // Update Animator parameters
-        anim.SetFloat("Speed", Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z));
+        float movementSpeed = Mathf.Abs(inputX) + Mathf.Abs(inputZ);
+        anim.SetFloat("Speed", movementSpeed);
+        anim.SetFloat("InputX", inputX);
+        anim.SetFloat("InputZ", inputZ);
         anim.SetBool("isGrounded", controller.isGrounded);
         if (controller.isGrounded)
         {
             anim.SetBool("isJumping", false);
         }
-
 
     }
 

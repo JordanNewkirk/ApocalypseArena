@@ -21,12 +21,10 @@ public class HealthManager : MonoBehaviour
     public Image healthDisplay;
     public float healthAmount = 100f;
 
-    private Animator anim;
 
     private void Start()
     {
         thePlayer = FindObjectOfType<PlayerController>();
-        anim.GetComponent<Animator>();
     }
 
     // Update is called once per frame
