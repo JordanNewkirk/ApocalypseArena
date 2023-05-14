@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -56,8 +57,12 @@ public class WaveSpawner : MonoBehaviour
     {
         waveNumber = 1;
         zombiesRemaining = zombiesPerWave;
-        UpdateUI();
         waveNumberText.text = "Wave: " + waveNumber.ToString();
+        UpdateUI();
+
+        Color textColor = waveNumberText.color;
+        textColor.a = 0f;
+        waveNumberText.color = textColor;
 
         StartCoroutine(SpawnWave());
         OnSpawn?.Invoke(this, new OnSpawnEventArgs(this));
@@ -74,10 +79,13 @@ public class WaveSpawner : MonoBehaviour
     void StartNextWave()
     {
         waveNumber++;
-        waveNumberText.text = "Wave: " + waveNumber.ToString();
+        waveNumberText.text = "Wave " + waveNumber.ToString();
 
         zombiesPerWave += 5;
         zombiesRemaining = zombiesPerWave;
+
+        StartCoroutine(FadeTextInAndOut(waveNumberText));
+
 
         StartCoroutine(SpawnWave());
         OnSpawn?.Invoke(this, new OnSpawnEventArgs(this));
@@ -103,6 +111,39 @@ public class WaveSpawner : MonoBehaviour
     void UpdateUI()
     {
         zombiesRemainingText.text = "Zombies Until Next Wave: " + zombiesRemaining.ToString();
+    }
+
+    IEnumerator FadeTextInAndOut(TextMeshProUGUI text)
+    {
+        float fadeInDuration = 1f; // adjust the duration to your liking
+        float fadeOutDuration = 1f; // adjust the duration to your liking
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeInDuration)
+        {
+            float alpha = Mathf.Lerp(0f, 1f, elapsedTime / fadeInDuration);
+            Color color = text.color;
+            color.a = alpha;
+            text.color = color;
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(2f); // adjust the wait time to your liking
+
+        elapsedTime = 0f;
+
+        while (elapsedTime < fadeOutDuration)
+        {
+            float alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeOutDuration);
+            Color color = text.color;
+            color.a = alpha;
+            text.color = color;
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
     }
 }
 
