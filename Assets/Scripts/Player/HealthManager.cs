@@ -8,8 +8,6 @@ using TMPro;
 public class HealthManager : MonoBehaviour
 {
 
-    public int maxHealth;
-    public int currentHealth;
 
     public PlayerController thePlayer;
 
@@ -20,18 +18,12 @@ public class HealthManager : MonoBehaviour
     private float flashCount;
     public float flashLength = 0.1f;
 
-    public TextMeshProUGUI healthDisplay;
+    public Image healthDisplay;
+    public float healthAmount = 100f;
 
     private void Start()
     {
-        currentHealth = maxHealth;
         thePlayer = FindObjectOfType<PlayerController>();
-        SetHealthText();
-    }
-
-    void SetHealthText()
-    {
-        healthDisplay.text = "Health: " + currentHealth.ToString();
     }
 
     // Update is called once per frame
@@ -54,14 +46,14 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    public void hurtPlayer(int damage, Vector3 direction)
+    public void hurtPlayer(float damage, Vector3 direction)
     {
         if(invincibilityCounter <= 0)
         {
-            currentHealth -= damage;
-            SetHealthText();
+            healthAmount -= damage;
+            healthDisplay.fillAmount = healthAmount / 100f;
 
-            if(currentHealth <= 0)
+            if(healthAmount <= 0)
             {
                 SceneManager.LoadScene("Death Menu");
             }
@@ -78,13 +70,10 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    public void healPlayer(int heal)
+    public void healPlayer(float heal)
     {
-        currentHealth += heal;
-
-        if(currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
+        healthAmount += heal;
+        healthAmount = Mathf.Clamp(healthAmount, 0, 100);
+        healthDisplay.fillAmount = healthAmount / 100f;
     }
 }
