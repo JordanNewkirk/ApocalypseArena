@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
+    public AudioSource zombieWalking;
+    private void Start()
+    {
+        zombieWalking.volume = 1f;
+        //zombieWalking.loop = true;
+        zombieWalking.Play();
+    }
     public class OnDeathEventArgs
     {
         public Zombie Zombie;
