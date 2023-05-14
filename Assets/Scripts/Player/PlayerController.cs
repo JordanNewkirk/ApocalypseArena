@@ -33,44 +33,16 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //rb = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
         anim = playerModel.GetComponent<Animator>();
-        //count = 0;
-
-        //SetCountText();
-        //winTextObject.SetActive(false);
-
 
     }
-
-    //void SetCountText()
-    //{
-    //countText.text = "Count: " + count.ToString();
-
-    //  if (count == 1)
-    //{
-    //  Win.Play();
-    //winTextObject.SetActive(true);
-    //}
-    //}
-
-
-
-
 
 
     // Update is called once per frame
     void Update()
     {
-        /*rb.velocity = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y, Input.GetAxis("Vertical") * moveSpeed);
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
-        } */
-
-        //moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
         if (knockBackCounter <= 0)
         {
 
@@ -93,17 +65,6 @@ public class PlayerController : MonoBehaviour
                     moveDirection.y = jumpForce;
                 }
             }
-            //else
-            //{
-            // if (Input.GetButtonDown("Jump") && canDoubleJump)
-            // {
-            //Jump.Play();
-            //  moveDirection.y = jumpForce * doubleJumpScale;
-            //anim.SetBool("isGrounded", true);
-            // canDoubleJump = false;
-            //}
-
-            //}
 
         }
         else

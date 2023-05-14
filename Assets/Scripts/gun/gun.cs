@@ -8,6 +8,9 @@ public class gun : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed = 100;
 
+    public float shootingCooldown = 0.5f; //delay between shots
+    private float coolDownTimer = 0f; //timer to track cooldown
+
     public AudioSource Shooting;
 
     private void Start()
@@ -17,11 +20,15 @@ public class gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        coolDownTimer -= Time.deltaTime;
+
+        if (Input.GetMouseButtonDown(0) && coolDownTimer <= 0f)
         {
             var bullet = Instantiate(bulletPrefab, BulletSpawner.position, BulletSpawner.rotation);
             bullet.GetComponent<Rigidbody>().velocity = BulletSpawner.forward * bulletSpeed;
             Shooting.Play();
+
+            coolDownTimer = shootingCooldown;
         }
     }
 }
