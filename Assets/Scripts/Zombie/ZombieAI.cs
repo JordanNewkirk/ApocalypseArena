@@ -6,7 +6,7 @@ public class ZombieAI : MonoBehaviour
     public Transform player;
     public NavMeshAgent agent;
 
-    public int damageToGive = 1;
+    public float damageToGive = 20f;
 
     public Animator anim;
 
@@ -17,7 +17,7 @@ public class ZombieAI : MonoBehaviour
     void Start()
     {
         //Debug.Log("Player: " + player.name);
-        damageToGive = 1;
+        damageToGive = 20f;
       
     }
 

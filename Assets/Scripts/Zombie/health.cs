@@ -20,6 +20,7 @@ public class health : MonoBehaviour
         if(currentHealth <= 0)
         {
             Destroy(gameObject);
+            FindObjectOfType<scorescript>().raiseScore();
         }
     }
 }
