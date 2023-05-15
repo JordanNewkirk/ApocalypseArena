@@ -8,7 +8,7 @@ public class gun : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed = 100;
 
-    public float shootingCooldown = 0.5f; //delay between shots
+    public float shootingCooldown = 0.2f; //delay between shots
     private float coolDownTimer = 0f; //timer to track cooldown
 
     public AudioSource Shooting;
