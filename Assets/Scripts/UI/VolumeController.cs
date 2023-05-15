@@ -12,7 +12,6 @@ public class VolumeController : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
         LoadValues();
     }
 

@@ -1,34 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class Heal : MonoBehaviour
+public class AutoGun : MonoBehaviour
 {
     public TextMeshProUGUI description;
-    public float heal = 40f;
 
     private void Start()
     {
-        description.gameObject.SetActive(false);
+        description.gameObject.SetActive(false);    
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            StartCoroutine(PickUp());
+            description.gameObject.SetActive(true);
+            StartCoroutine(FadeTextInAndOut(description));
+        }
     }
 
-    public void OnTriggerEnter(Collider other)
+    IEnumerator PickUp()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if (FindObjectOfType<HealthManager>().healthAmount < 100)
-            {
-                description.gameObject.SetActive(true);
-                StartCoroutine(FadeTextInAndOut(description));
-                FindObjectOfType<HealthManager>().healPlayer(heal);
+        FindObjectOfType<gun>().shootingCooldown = .1f;
 
-                GetComponent<MeshRenderer>().enabled = false;
-                GetComponent<Collider>().enabled = false;
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
 
-                Destroy(this.gameObject, 2f);
-            }
-        }
+        yield return new WaitForSeconds(10f);
+
+        FindObjectOfType<gun>().shootingCooldown = .5f;
+
+        Destroy(gameObject);
     }
 
     IEnumerator FadeTextInAndOut(TextMeshProUGUI text)

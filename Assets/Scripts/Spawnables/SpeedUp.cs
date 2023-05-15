@@ -1,34 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class Heal : MonoBehaviour
+public class SpeedUp : MonoBehaviour
 {
     public TextMeshProUGUI description;
-    public float heal = 40f;
 
     private void Start()
     {
         description.gameObject.SetActive(false);
     }
-
-    public void OnTriggerEnter(Collider other)
+    //public GameObject pickupEffect;
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            if (FindObjectOfType<HealthManager>().healthAmount < 100)
-            {
-                description.gameObject.SetActive(true);
-                StartCoroutine(FadeTextInAndOut(description));
-                FindObjectOfType<HealthManager>().healPlayer(heal);
-
-                GetComponent<MeshRenderer>().enabled = false;
-                GetComponent<Collider>().enabled = false;
-
-                Destroy(this.gameObject, 2f);
-            }
+            StartCoroutine(PickUp(other));
+            description.gameObject.SetActive(true);
+            StartCoroutine(FadeTextInAndOut(description));
         }
+    }
+
+    IEnumerator PickUp(Collider player)
+    {
+        player.GetComponent<PlayerController>().moveSpeed = 10f;
+
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
+
+        yield return new WaitForSeconds(10f);
+
+        player.GetComponent<PlayerController>().moveSpeed = 5.2f;
+
+        Destroy(gameObject);
     }
 
     IEnumerator FadeTextInAndOut(TextMeshProUGUI text)
@@ -64,3 +69,4 @@ public class Heal : MonoBehaviour
         }
     }
 }
+
