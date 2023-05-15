@@ -7,7 +7,7 @@ public class DeathMenu : MonoBehaviour
 {
     public void Retry()
     {
-        SceneManager.LoadScene("JordanTest");
+        SceneManager.LoadScene("Final");
     }
 
     public void Quit()
