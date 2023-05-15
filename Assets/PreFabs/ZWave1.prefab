@@ -2345,7 +2345,7 @@ GameObject:
   - component: {fileID: 6516469720048424684}
   - component: {fileID: 5705039683059638163}
   m_Layer: 0
-  m_Name: Survivor A Lusth
+  m_Name: ZWave1
   m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2442,7 +2442,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5.1
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -2466,6 +2466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e56b28e4d91d447189228986109afc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 2
 --- !u!1 &8546836960696715473
 GameObject:
   m_ObjectHideFlags: 0

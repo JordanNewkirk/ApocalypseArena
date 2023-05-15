@@ -6,13 +6,16 @@ using Unity.VisualScripting;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public GameObject zombiePrefab;
+    public GameObject zombiePrefab1;
+    public GameObject zombiePrefab2;
+    public GameObject zombiePrefab3;
+    public GameObject zombiePrefab4;
     public Transform[] spawnPoints;
     public TextMeshProUGUI zombiesRemainingText;
     public TextMeshProUGUI waveNumberText;
 
     public int waveNumber = 1;
-    private int zombiesPerWave = 10;
+    private int zombiesPerWave = 9;
     private int zombiesRemaining = 0;
     private int currentSpawnPointIndex = 0;
 
@@ -81,7 +84,7 @@ public class WaveSpawner : MonoBehaviour
         waveNumber++;
         waveNumberText.text = "Wave " + waveNumber.ToString();
 
-        zombiesPerWave += 5;
+        zombiesPerWave += 3;
         zombiesRemaining = zombiesPerWave;
 
         StartCoroutine(FadeTextInAndOut(waveNumberText));
@@ -105,7 +108,25 @@ public class WaveSpawner : MonoBehaviour
     {
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-        Instantiate(zombiePrefab, spawnPoint.position, spawnPoint.rotation);
+        switch (waveNumber)
+        {
+            case 1:
+                Instantiate(zombiePrefab1, spawnPoint.position, spawnPoint.rotation);
+                break;
+            case 2:
+                Instantiate(zombiePrefab2, spawnPoint.position, spawnPoint.rotation);
+                break;
+            case 3:
+                Instantiate(zombiePrefab3, spawnPoint.position, spawnPoint.rotation);
+                break;
+            case 4:
+                Instantiate(zombiePrefab4, spawnPoint.position, spawnPoint.rotation);
+                break;
+            case 5:
+                Instantiate(zombiePrefab4, spawnPoint.position, spawnPoint.rotation);
+                break;
+        }
+            
     }
 
     void UpdateUI()
