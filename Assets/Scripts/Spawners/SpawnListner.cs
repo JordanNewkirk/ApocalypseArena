@@ -6,6 +6,10 @@ public class SpawnListner : MonoBehaviour
 {
 
     public GameObject zombiePrefab;
+    public GameObject zombiePrefab1;
+    public GameObject zombiePrefab2;
+    public GameObject zombiePrefab3;
+    public GameObject bossZombiePrefab;
     public Transform spawnPoint;
 
     public int numOfZombies;
@@ -38,34 +42,34 @@ public class SpawnListner : MonoBehaviour
         if(e.Spawn.waveNumber == 1)
         {
             numOfZombies = 1;
-            SpawnZombie(numOfZombies);
+            SpawnZombie(zombiePrefab, numOfZombies);
         }
         else if(e.Spawn.waveNumber == 2)
         {
             numOfZombies = 2;
-            SpawnZombie(numOfZombies);
+            SpawnZombie(zombiePrefab1, numOfZombies);
         }
         else if(e.Spawn.waveNumber == 3)
         {
             numOfZombies = 3;
-            SpawnZombie(numOfZombies);
+            SpawnZombie(zombiePrefab2, numOfZombies);
         }
         else if(e.Spawn.waveNumber == 4)
         {
             numOfZombies = 4;
-            SpawnZombie(numOfZombies);
+            SpawnZombie(zombiePrefab3, numOfZombies);
         }
         else if(e.Spawn.waveNumber == 5)
         {
             numOfZombies = 5;
-            SpawnZombie(numOfZombies);
+            SpawnZombie(bossZombiePrefab, numOfZombies);
         }
     }
 
-    void SpawnZombie(int numOfZombies)
+    void SpawnZombie(GameObject zombie, int numOfZombies)
     {
         for(int i = 0; i < numOfZombies; i++)
-            Instantiate(zombiePrefab, spawnPoint.position, spawnPoint.rotation);
+            Instantiate(zombie, spawnPoint.position, spawnPoint.rotation);
 
         OnZombieAdded?.Invoke(this, new OnZombieAddedArgs(numOfZombies));
     }
