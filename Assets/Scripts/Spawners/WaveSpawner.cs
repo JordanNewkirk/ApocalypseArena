@@ -16,6 +16,12 @@ public class WaveSpawner : MonoBehaviour
     private int zombiesRemaining = 0;
     private int currentSpawnPointIndex = 0;
 
+    private void Awake()
+    {
+        
+    }
+
+
     private void OnEnable()
     {
         SpawnListner.OnZombieAdded += SpawnListner_OnZombieAdded;
@@ -57,15 +63,12 @@ public class WaveSpawner : MonoBehaviour
     {
         waveNumber = 1;
         zombiesRemaining = zombiesPerWave;
-        waveNumberText.text = "Wave: " + waveNumber.ToString();
-        UpdateUI();
+        waveNumberText.text = "Wave " + waveNumber.ToString();
 
-        Color textColor = waveNumberText.color;
-        textColor.a = 0f;
-        waveNumberText.color = textColor;
-
+        StartCoroutine(FadeTextInAndOut(waveNumberText));
         StartCoroutine(SpawnWave());
         OnSpawn?.Invoke(this, new OnSpawnEventArgs(this));
+        UpdateUI();
     }
 
     void Update()
@@ -85,8 +88,6 @@ public class WaveSpawner : MonoBehaviour
         zombiesRemaining = zombiesPerWave;
 
         StartCoroutine(FadeTextInAndOut(waveNumberText));
-
-
         StartCoroutine(SpawnWave());
         OnSpawn?.Invoke(this, new OnSpawnEventArgs(this));
         UpdateUI();
