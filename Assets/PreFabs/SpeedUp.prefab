@@ -167,7 +167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player Sped Up (10 sec)
+  m_text: Player Sped Up (15 sec)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f93406dee386b4a0bb6d4cab5240e27a, type: 2}
   m_sharedMaterial: {fileID: 6439633647826789703, guid: f93406dee386b4a0bb6d4cab5240e27a, type: 2}

@@ -167,7 +167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Unlimted Fire Rate (10 sec)
+  m_text: Unlimted Fire Rate (15 sec)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 99f2b649479c99d439de23b06bcc577d, type: 2}
   m_sharedMaterial: {fileID: 2324288545671815762, guid: 99f2b649479c99d439de23b06bcc577d, type: 2}
