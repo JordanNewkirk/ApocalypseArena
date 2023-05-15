@@ -11,9 +11,12 @@ public class Heal : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            FindObjectOfType<HealthManager>().healPlayer(heal);
+            if (FindObjectOfType<HealthManager>().healthAmount < 100)
+            {
+                FindObjectOfType<HealthManager>().healPlayer(heal);
 
-            Destroy(this.gameObject);
+                Destroy(this.gameObject);
+            }
         }
     }
 
