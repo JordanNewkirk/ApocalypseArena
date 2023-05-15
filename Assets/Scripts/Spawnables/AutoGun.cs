@@ -30,7 +30,7 @@ public class AutoGun : MonoBehaviour
 
         yield return new WaitForSeconds(15f);
 
-        FindObjectOfType<gun>().shootingCooldown = .2f;
+        FindObjectOfType<gun>().shootingCooldown = .25f;
 
         Destroy(gameObject);
     }

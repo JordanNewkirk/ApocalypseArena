@@ -83,6 +83,11 @@ public class WaveSpawner : MonoBehaviour
         {
             SceneManager.LoadScene("YouWin");
         }
+
+        if(Input.GetKeyDown("J"))
+        {
+            waveNumber = 5;
+        }
     }
 
     void StartNextWave()
