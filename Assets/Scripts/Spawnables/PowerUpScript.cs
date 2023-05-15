@@ -5,8 +5,10 @@ using UnityEngine;
 public class PowerUpScript : MonoBehaviour
 {
 
-    public GameObject powerUp;
-    public Transform spawnPoint;
+    public GameObject HealthPowerUp;
+    public GameObject AutoGunPowerUp;
+    public GameObject SpeedPowerUp;
+    public Transform[] spawnPoints;
 
 
     private void OnEnable()
@@ -23,30 +25,33 @@ public class PowerUpScript : MonoBehaviour
     {
         if (e.Spawn.waveNumber == 1)
         {
-            SpawnPowerUp();
+            SpawnPowerUps();
         }
         else if (e.Spawn.waveNumber == 2)
         {
-            SpawnPowerUp();
+            SpawnPowerUps();
         }
         else if (e.Spawn.waveNumber == 3)
         {
-            SpawnPowerUp();
+            SpawnPowerUps();
         }
         else if (e.Spawn.waveNumber == 4)
         {
-            SpawnPowerUp();
+            SpawnPowerUps();
         }
         else if (e.Spawn.waveNumber == 5)
         {
-            SpawnPowerUp();
+            SpawnPowerUps();
         }
     }
 
-    void SpawnPowerUp()
+    void SpawnPowerUps()
     { 
-          Instantiate(powerUp, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(HealthPowerUp, spawnPoints[0].position, spawnPoints[0].rotation);
+        Instantiate(AutoGunPowerUp, spawnPoints[1].position, spawnPoints[1].rotation);
+        Instantiate(SpeedPowerUp, spawnPoints[2].position, spawnPoints[2].rotation);
     }
+
 
 
 }
