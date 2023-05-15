@@ -45,5 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 8455543088010505098, guid: fb78c28fdb9aa67418e5e4da94e06296, type: 3}
+  zombiePrefab1: {fileID: 8455543088010505098, guid: 82ef035ca368742ba898596f3674119e, type: 3}
+  zombiePrefab2: {fileID: 8455543088010505098, guid: 7a71bc59517a94592af831e447fbaf59, type: 3}
+  zombiePrefab3: {fileID: 8455543088010505098, guid: dbca82f181b65422eb142390e4eec161, type: 3}
+  bossZombiePrefab: {fileID: 8624760772932162548, guid: a3cecd1f7b93688488f3037c7e9c88b1, type: 3}
   spawnPoint: {fileID: 6252025659756467714}
   numOfZombies: 0

@@ -874,6 +874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  currentHealth: 0
 --- !u!114 &8624760772932162550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,7 +887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4224a4385763547b06788a834a1d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 318371108073839813, guid: 9f43a52853cd7c1459335a54aa7d8889, type: 3}
   agent: {fileID: 8624760772932162552}
   anim: {fileID: 8624760772932162554}
   damageToGive: 50
@@ -903,7 +904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d11e4961478d5546aa8e70298517a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieWalking: {fileID: 0}
+  zombieWalking: {fileID: 3635532129076941602, guid: fb78c28fdb9aa67418e5e4da94e06296, type: 3}
 --- !u!1 &8624760772955500172
 GameObject:
   m_ObjectHideFlags: 0
