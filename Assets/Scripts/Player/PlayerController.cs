@@ -55,24 +55,24 @@ public class PlayerController : MonoBehaviour
 
 
 
-
-            if (controller.isGrounded)
-            {
-                moveDirection.y = 0f;
-
-                if (Input.GetButtonDown("Jump"))
-                {
-                    //Jump.Play();
-                    anim.SetBool("isJumping", true);
-                    moveDirection.y = jumpForce;
-                }
-            }
-
-        }
-        else
-        {
             knockBackCounter -= Time.deltaTime;
+            //if (controller.isGrounded)
+            //{
+            //moveDirection.y = 0f;
+
+            //if (Input.GetButtonDown("Jump"))
+            //{
+            //Jump.Play();
+            //anim.SetBool("isJumping", true);
+            //moveDirection.y = jumpForce;
+            // }
+            //}
+
         }
+        //else
+        //{
+            //knockBackCounter -= Time.deltaTime;
+        //}
 
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
@@ -98,10 +98,6 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("InputX", inputX);
         anim.SetFloat("InputZ", inputZ);
         anim.SetBool("isGrounded", controller.isGrounded);
-        if (controller.isGrounded)
-        {
-            anim.SetBool("isJumping", false);
-        }
 
     }
 
