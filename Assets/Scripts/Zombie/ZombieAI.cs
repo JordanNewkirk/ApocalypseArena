@@ -15,19 +15,27 @@ public class ZombieAI : MonoBehaviour
 
     private Vector3 randomDestination; // Random destination for movement
 
+    private bool isDead;
+
+
     void Start()
     {
         damageToGive = 20f;
         randomMoveTimer = randomMoveInterval;
+
     }
 
     void Update()
     {
         player = GameObject.FindWithTag("Player").transform;
 
-        // Always move towards the player
-        agent.SetDestination(player.position);
-
+        if (!isRandomMoving)
+        {
+            // Always move towards the player
+            agent.SetDestination(player.position);
+        }
+        
+       
         // Check if it's time for a random movement
         randomMoveTimer -= Time.deltaTime;
         if (randomMoveTimer <= 0f)
@@ -51,6 +59,8 @@ public class ZombieAI : MonoBehaviour
 
             // Reset the random movement timer
             randomMoveTimer = Random.Range(randomMoveInterval * 0.5f, randomMoveInterval * 1.5f);
+
+            
         }
 
         // Update animator parameter for speed

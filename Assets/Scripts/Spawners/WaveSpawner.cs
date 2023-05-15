@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -76,6 +77,11 @@ public class WaveSpawner : MonoBehaviour
         if (zombiesRemaining <= 0)
         {
             StartNextWave();
+        }
+
+        if(waveNumber == 6)
+        {
+            SceneManager.LoadScene("YouWin");
         }
     }
 

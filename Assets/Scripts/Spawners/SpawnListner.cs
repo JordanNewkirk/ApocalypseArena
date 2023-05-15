@@ -61,7 +61,7 @@ public class SpawnListner : MonoBehaviour
         }
         else if(e.Spawn.waveNumber == 5)
         {
-            numOfZombies = 5;
+            numOfZombies = 1;
             SpawnZombie(bossZombiePrefab, numOfZombies);
         }
     }
