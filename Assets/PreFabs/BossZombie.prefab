@@ -873,6 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e56b28e4d91d447189228986109afc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 10
 --- !u!114 &8624760772932162550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,9 +888,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   agent: {fileID: 8624760772932162552}
-  damageToGive: 50
   anim: {fileID: 8624760772932162554}
-  chaseDistance: 75
+  damageToGive: 50
+  randomMoveInterval: 10
 --- !u!114 &8624760772932162551
 MonoBehaviour:
   m_ObjectHideFlags: 0
