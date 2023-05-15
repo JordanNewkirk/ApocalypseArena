@@ -54,8 +54,6 @@ public class PlayerController : MonoBehaviour
             moveDirection.y = yStore;
 
 
-
-            knockBackCounter -= Time.deltaTime;
             //if (controller.isGrounded)
             //{
             //moveDirection.y = 0f;
@@ -69,10 +67,10 @@ public class PlayerController : MonoBehaviour
             //}
 
         }
-        //else
-        //{
-            //knockBackCounter -= Time.deltaTime;
-        //}
+        else
+        {
+            knockBackCounter -= Time.deltaTime;
+        }
 
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
@@ -114,6 +112,8 @@ public class PlayerController : MonoBehaviour
         moveDirection = direction * knockBackForce;
         moveDirection.y = knockBackForce;
     }
+
+
 
 
 }
