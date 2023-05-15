@@ -5166,7 +5166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1fdd6e8682c364786cf96ac8fd5677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 8455543088010505098, guid: fb78c28fdb9aa67418e5e4da94e06296, type: 3}
+  zombiePrefab1: {fileID: 8455543088010505098, guid: fb78c28fdb9aa67418e5e4da94e06296, type: 3}
+  zombiePrefab2: {fileID: 8455543088010505098, guid: 82ef035ca368742ba898596f3674119e, type: 3}
+  zombiePrefab3: {fileID: 8455543088010505098, guid: 7a71bc59517a94592af831e447fbaf59, type: 3}
+  zombiePrefab4: {fileID: 8455543088010505098, guid: dbca82f181b65422eb142390e4eec161, type: 3}
   spawnPoints:
   - {fileID: 341664694}
   - {fileID: 111148421}
