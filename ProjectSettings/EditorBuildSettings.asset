@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 990d1ae307fc394498b8380a21a1c5f4
   - enabled: 1
-    path: Assets/Scenes/BrandonTest.unity
+    path: Assets/Scenes/Final.unity
     guid: 398b33a51ffc3a84fafd85f5684d85c5
   - enabled: 1
     path: Assets/Scenes/Death Menu.unity
     guid: 8c647c58a08ddd946ba8e9c059a90230
+  - enabled: 1
+    path: Assets/Scenes/YouWin.unity
+    guid: e047693b5fa5cc34394c81da20927709
   m_configObjects: {}

@@ -23,14 +23,14 @@ public class AutoGun : MonoBehaviour
 
     IEnumerator PickUp()
     {
-        FindObjectOfType<gun>().shootingCooldown = .1f;
+        FindObjectOfType<gun>().shootingCooldown = 0f;
 
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(15f);
 
-        FindObjectOfType<gun>().shootingCooldown = .5f;
+        FindObjectOfType<gun>().shootingCooldown = .2f;
 
         Destroy(gameObject);
     }

@@ -29,7 +29,7 @@ public class SpeedUp : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(15f);
 
         player.GetComponent<PlayerController>().moveSpeed = 5.2f;
 
